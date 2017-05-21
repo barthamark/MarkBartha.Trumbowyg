@@ -1,0 +1,89 @@
+﻿@using Orchard.Environment.Descriptor.Models
+
+@{
+    Script.Require("Trumbowyg.CleanPaste");
+    Script.Require("Trumbowyg.Base64");
+    Script.Require("Trumbowyg.NoEmbed");
+    Script.Require("Trumbowyg.Colors");
+    Script.Require("Trumbowyg.Emoji");
+    Script.Require("Trumbowyg.Preformatted");
+    Script.Require("Trumbowyg.Table");
+    Script.Require("Trumbowyg.Template");
+
+    Style.Require("Trumbowyg.Colors");
+    Style.Require("jQueryColorBox");
+
+    var mediaLibraryEnabled = WorkContext.Resolve<ShellDescriptor>().Features.Any(x => x.Name == "Orchard.MediaLibrary");
+    if (mediaLibraryEnabled)
+    {
+        Script.Require("Trumbowyg.MediaLibrary");
+    }
+
+    if (string.IsNullOrEmpty(Model.Id as string))
+    {
+        Model.Id = MarkBartha.Trumbowyg.Helpers.FieldIdGenerator.GetRandomFieldId("editor");
+    }
+
+    if (!Model.Attributes.ContainsKey("name") && !string.IsNullOrEmpty(Model.Name as string))
+    {
+        Model.Attributes["name"] = Model.Name;
+    }
+
+    var tag = Tag(Model, "textarea");
+}
+
+@tag.StartElement
+
+@Model.Text
+
+@tag.EndElement
+
+
+@using (Script.Foot())
+{
+    <script type="text/javascript">
+        (function ($) {
+            $(function () {
+                $.extend(true, $.trumbowyg, {
+                    langs: {
+                        en: {
+                            media: 'Media',
+                        }
+                    }
+                });
+
+                $('#@Model.Id').trumbowyg({
+                    resetCss: true,
+                    btnsDef: {
+                        media: {
+                            dropdown: [
+                                @if (mediaLibraryEnabled)
+                                {
+                                    @:'insertMediaLibraryItem',
+                                }
+                                'base64',
+                                'noembed'],
+                            ico: 'insertImage'
+                        }
+                    },
+                    btns: [
+                        ['viewHTML'],
+                        ['undo', 'redo'],
+                        ['formatting'],
+                        'btnGrp-design',
+                        ['link'],
+                        ['media'],
+                        'btnGrp-justify',
+                        'btnGrp-lists',
+                        ['foreColor', 'backColor'],
+                        ['preformatted'],
+                        ['horizontalRule'],
+                        ['table']
+                        ['removeformat'],
+                        ['fullscreen']
+                    ]
+                });
+            });
+        })(jQuery);
+    </script>
+}

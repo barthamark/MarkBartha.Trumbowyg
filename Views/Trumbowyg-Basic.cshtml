@@ -1,0 +1,63 @@
+﻿@using Orchard.Environment.Descriptor.Models
+
+@{
+    Script.Require("Trumbowyg.CleanPaste");
+    Script.Require("Trumbowyg.MediaLibrary");
+
+    Style.Require("jQueryColorBox");
+    Style.Require("Trumbowyg");
+
+    var mediaLibraryEnabled = WorkContext.Resolve<ShellDescriptor>().Features.Any(x => x.Name == "Orchard.MediaLibrary");
+    if (mediaLibraryEnabled)
+    {
+        Script.Require("Trumbowyg.MediaLibrary");
+    }
+
+    if (string.IsNullOrEmpty(Model.Id as string))
+    {
+        Model.Id = MarkBartha.Trumbowyg.Helpers.FieldIdGenerator.GetRandomFieldId("editor");
+    }
+
+    if (!Model.Attributes.ContainsKey("name") && !string.IsNullOrEmpty(Model.Name as string))
+    {
+        Model.Attributes["name"] = Model.Name;
+    }
+
+    var tag = Tag(Model, "textarea");
+}
+
+@tag.StartElement
+
+@Model.Text
+
+@tag.EndElement
+
+
+@using (Script.Foot())
+{
+    <script type="text/javascript">
+        (function ($) {
+            $(function () {
+                $('#@Model.Id').trumbowyg({
+                    resetCss: true,
+                    btns: [
+                        ['viewHTML'],
+                        ['undo', 'redo'],
+                        ['formatting'],
+                        'btnGrp-design',
+                        ['link'],
+                        @if (mediaLibraryEnabled)
+                        {
+                            @:'insertMediaLibraryItem',
+                        }
+                        'btnGrp-justify',
+                        'btnGrp-lists',
+                        ['horizontalRule'],
+                        ['removeformat'],
+                        ['fullscreen']
+                    ]
+                });
+            });
+        })(jQuery);
+    </script>
+}

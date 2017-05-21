@@ -1,0 +1,61 @@
+@import "../Content/Trumbowyg/ui/sass/trumbowyg.scss";
+
+// Some Orchard-specific styling is required especially on the dashboard.
+.trumbowyg-reset-css {
+    i, cite, em, var, address, dfn {
+        font-style: italic;
+    }
+
+    ul, menu, dir {
+        list-style-type: disc;
+    }
+
+    ol {
+        list-style-type: decimal;
+    }
+
+    sub {
+        vertical-align: sub;
+        font-size: smaller;
+    }
+
+    sup {
+        vertical-align: super;
+        font-size: smaller;
+    }
+
+    pre, xmp, plaintext, listing {
+        display: block;
+        font-family: monospace;
+        white-space: pre;
+        margin: 1em 0px 1em;
+    }
+
+    tt, code, kbd, samp {
+        font-family: monospace;
+    }
+}
+
+.trumbowyg-button-group {
+    button {
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+
+        &, &:hover, &:active {
+            color: black;
+        }
+
+        &:hover {
+            background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+        }
+
+        &:active {
+            border: none;
+        }
+    }
+}
+
+.trumbowyg-modal-button {
+    padding: 0;
+}

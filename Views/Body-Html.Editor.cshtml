@@ -1,0 +1,6 @@
+﻿@{
+    var fieldId = ViewData.TemplateInfo.GetFullHtmlFieldId("Text");
+    var fieldName = ViewData.TemplateInfo.GetFullHtmlFieldName("Text");
+}
+
+@Display.Trumbowyg__Full(Id: fieldId, Name: fieldName, Text: Model.Text)

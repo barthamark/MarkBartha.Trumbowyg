@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Scripts/trumbowyg.min.js",
+    "inputFile": "Scripts/trumbowyg.js"
+  },
+  {
+    "outputFile": "Styles/trumbowyg-orchard.css",
+    "inputFile": "Styles/trumbowyg-orchard.scss"
+  }
+]
