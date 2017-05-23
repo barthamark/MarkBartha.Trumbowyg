@@ -594,8 +594,10 @@ body.trumbowyg-body-fullscreen {
 .trumbowyg-button-group button {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
-  box-shadow: none; }
+  box-shadow: none;
+  border: 0; }
   .trumbowyg-button-group button, .trumbowyg-button-group button:hover, .trumbowyg-button-group button:active {
+    border: 0;
     color: black; }
   .trumbowyg-button-group button:hover {
     background: none repeat scroll 0 0 transparent; }

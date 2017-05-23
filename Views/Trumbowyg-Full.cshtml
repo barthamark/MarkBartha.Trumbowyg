@@ -1,4 +1,5 @@
 ﻿@using Orchard.Environment.Descriptor.Models
+@using Orchard.Security
 
 @{
     Script.Require("Trumbowyg.CleanPaste");
@@ -13,7 +14,8 @@
     Style.Require("Trumbowyg.Colors");
     Style.Require("jQueryColorBox");
 
-    var mediaLibraryEnabled = WorkContext.Resolve<ShellDescriptor>().Features.Any(x => x.Name == "Orchard.MediaLibrary");
+    var mediaLibraryEnabled = WorkContext.Resolve<ShellDescriptor>().Features.Any(x => x.Name == "Orchard.MediaLibrary") &&
+        WorkContext.Resolve<IAuthorizer>().Authorize(StandardPermissions.AccessAdminPanel); ;
     if (mediaLibraryEnabled)
     {
         Script.Require("Trumbowyg.OrchardMediaLibrary");
