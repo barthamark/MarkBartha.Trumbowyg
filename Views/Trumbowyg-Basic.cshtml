@@ -2,7 +2,6 @@
 
 @{
     Script.Require("Trumbowyg.CleanPaste");
-    Script.Require("Trumbowyg.MediaLibrary");
 
     Style.Require("jQueryColorBox");
     Style.Require("Trumbowyg");
@@ -10,7 +9,7 @@
     var mediaLibraryEnabled = WorkContext.Resolve<ShellDescriptor>().Features.Any(x => x.Name == "Orchard.MediaLibrary");
     if (mediaLibraryEnabled)
     {
-        Script.Require("Trumbowyg.MediaLibrary");
+        Script.Require("Trumbowyg.OrchardMediaLibrary");
     }
 
     if (string.IsNullOrEmpty(Model.Id as string))
@@ -48,7 +47,7 @@
                         ['link'],
                         @if (mediaLibraryEnabled)
                         {
-                            @:'insertMediaLibraryItem',
+                            @:'insertOrchardMedia',
                         }
                         'btnGrp-justify',
                         'btnGrp-lists',

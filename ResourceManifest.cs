@@ -14,12 +14,12 @@ namespace MarkBartha.Trumbowyg {
             manifest.DefineScript("Trumbowyg.Preformatted").SetUrl("../Content/Trumbowyg/plugins/preformatted/trumbowyg.preformatted.min.js").SetDependencies("Trumbowyg");
             manifest.DefineScript("Trumbowyg.Table").SetUrl("../Content/Trumbowyg/plugins/table/trumbowyg.table.min.js").SetDependencies("Trumbowyg");
             manifest.DefineScript("Trumbowyg.Template").SetUrl("../Content/Trumbowyg/plugins/template/trumbowyg.template.min.js").SetDependencies("Trumbowyg");
-            manifest.DefineScript("Trumbowyg.MediaLibrary").SetUrl("trumbowyg.medialibrary.js").SetDependencies("Trumbowyg", "jQueryColorBox");
+
+            manifest.DefineScript("Trumbowyg.OrchardMediaLibrary").SetUrl("trumbowyg.orchardmedialibrary.js").SetDependencies("Trumbowyg", "jQueryColorBox");
+
 
             manifest.DefineStyle("Trumbowyg").SetUrl("trumbowyg-orchard.min.css");
             manifest.DefineStyle("Trumbowyg.Colors").SetUrl("../Content/Trumbowyg/plugins/colors/ui/trumbowyg.colors.min.css").SetDependencies("Trumbowyg");
-            //manifest.DefineScript("Trumbowyg").SetCdn("https://cloud.tinymce.com/stable/tinymce.min.js");
-            //manifest.DefineStyle("Trumbowyg").SetCdn("https://cdn.quilljs.com/1.2.4/quill.snow.css");
         }
     }
 }

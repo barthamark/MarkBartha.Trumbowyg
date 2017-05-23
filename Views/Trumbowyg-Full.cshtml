@@ -16,7 +16,7 @@
     var mediaLibraryEnabled = WorkContext.Resolve<ShellDescriptor>().Features.Any(x => x.Name == "Orchard.MediaLibrary");
     if (mediaLibraryEnabled)
     {
-        Script.Require("Trumbowyg.MediaLibrary");
+        Script.Require("Trumbowyg.OrchardMediaLibrary");
     }
 
     if (string.IsNullOrEmpty(Model.Id as string))
@@ -59,7 +59,7 @@
                             dropdown: [
                                 @if (mediaLibraryEnabled)
                                 {
-                                    @:'insertMediaLibraryItem',
+                                    @:'insertOrchardMedia',
                                 }
                                 'base64',
                                 'noembed'],

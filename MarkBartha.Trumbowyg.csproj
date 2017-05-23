@@ -161,7 +161,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\trumbowyg.medialibrary.js" />
+    <Content Include="Scripts\trumbowyg.orchardmedialibrary.js" />
     <Content Include="Styles\trumbowyg-orchard.css">
       <DependentUpon>trumbowyg-orchard.scss</DependentUpon>
     </Content>
@@ -204,6 +204,8 @@
     <Content Include="Views\Trumbowyg-Basic.cshtml" />
     <Content Include="Views\Body-TrumbowygFull.Editor.cshtml" />
     <Content Include="Views\Body-TrumbowygBasic.Editor.cshtml" />
+    <Content Include="README.md" />
+    <Content Include="LICENSE" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

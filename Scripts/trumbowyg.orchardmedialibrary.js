@@ -4,11 +4,11 @@
     $.extend(true, $.trumbowyg, {
         langs: {
             en: {
-                insertMediaLibraryItem: 'Media library',
+                insertOrchardMedia: 'Media library',
             }
         },
         plugins: {
-            insertMediaLibraryItem: {
+            insertOrchardMedia: {
                 init: function (trumbowyg) {
                     var btnDef = {
                         ico: 'insertImage',
@@ -54,7 +54,7 @@
                         }
                     };
 
-                    trumbowyg.addBtnDef('insertMediaLibraryItem', btnDef);
+                    trumbowyg.addBtnDef('insertOrchardMedia', btnDef);
                 }
             }
         }
